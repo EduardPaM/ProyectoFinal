@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catálogo | Sonara</title>
+    <script>document.documentElement.className = "js";</script>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="barra">
+        <div class="contenedor barra-interna">
+            <a class="logo" href="index.html">SO<span>NARA</span></a>
+            <nav id="menu">
+                <a class="btn-menu" href="index.html">Inicio</a>
+                <a class="btn-menu activo" href="catalogo.html">Catálogo</a>
+                <a class="btn-menu" href="simuladores.html">Simuladores</a>
+                <a class="btn-menu externo" href="https://www.amazon.com.mx" target="_blank" rel="noopener">Tienda</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="banda"><h2>Catálogo de audífonos</h2><p>Filtra por tipo y compara los modelos</p></div>
+
+    <section id="catalogo">
+        <div class="contenedor">
+            <div id="filtros">
+                <button class="boton activo" data-filtro="todos">Todos</button>
+                <button class="boton secundario" data-filtro="inear">In-ear</button>
+                <button class="boton secundario" data-filtro="diadema">De diadema</button>
+            </div>
+            <p id="contadorResultados"></p>
+            <div id="gridProductos"></div>
+        </div>
+    </section>
+
+    <div class="banda"><h2>Tabla comparativa</h2></div>
+
+    <section id="tabla">
+        <div class="contenedor tabla-scroll reveal" style="padding:50px 20px;">
+            <table class="comparativa">
+                <thead>
+                    <tr><th>Modelo</th><th>Tipo</th><th>Característica principal</th><th>Ideal para</th><th>Tienda</th></tr>
+                </thead>
+                <tbody id="cuerpoComparativa"></tbody>
+            </table>
+        </div>
+    </section>
+    <footer id="pie">
+        <div class="contenedor reveal">
+            <h2>Eduardo Palomino Martinez · ID24087</h2>
+            <p>Proyecto final · Arquitectura y Diseño para la Web II · Sonara, tu tienda de audífonos</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/codigoJavaScript.js"></script>
+</body>
+</html>

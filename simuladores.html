@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simuladores | Sonara</title>
+    <script>document.documentElement.className = "js";</script>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="barra">
+        <div class="contenedor barra-interna">
+            <a class="logo" href="index.html"><span>SO</span>NARA</a>
+            <nav id="menu">
+                <a class="btn-menu" href="index.html">Inicio</a>
+                <a class="btn-menu" href="catalogo.html">Catálogo</a>
+                <a class="btn-menu activo" href="simuladores.html">Simuladores</a>
+                <a class="btn-menu externo" href="https://www.amazon.com.mx" target="_blank" rel="noopener">Tienda</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="banda"><h2>Simuladores</h2><p>Prueba antes de comprar</p></div>
+
+    <section id="simuladores">
+        <div class="contenedor">
+
+            <div class="panel reveal" id="simBateria">
+                <h2>1. Simulador de batería</h2>
+                <p>Estimación didáctica: el volumen alto y la cancelación de ruido (ANC) reducen las horas de uso.</p>
+                <div class="controles">
+                    <div class="campo">
+                        <label for="horasNominales">Horas de batería indicadas (fabricante)</label>
+                        <input type="number" id="horasNominales" value="40" min="1" max="200">
+                    </div>
+                    <div class="campo">
+                        <label for="volumen">Volumen: <span class="valor" id="valVolumen">50%</span></label>
+                        <input type="range" id="volumen" min="0" max="100" value="50">
+                    </div>
+                    <div class="campo">
+                        <label for="usoDiario">Horas de uso por día</label>
+                        <input type="number" id="usoDiario" value="3" min="1" max="24">
+                    </div>
+                    <div class="campo">
+                        <label for="anc">Cancelación de ruido</label>
+                        <select id="anc"><option value="no">Apagada</option><option value="si">Encendida</option></select>
+                    </div>
+                </div>
+                <div class="resultado">
+                    <div class="dato"><div class="numero" id="resHoras">0 h</div><div class="texto">Horas estimadas</div></div>
+                    <div class="dato"><div class="numero" id="resDias">0</div><div class="texto">Días entre cargas</div></div>
+                    <div class="barra-fondo"><div id="barraBateria"></div></div>
+                </div>
+            </div>
+
+            <div class="panel reveal" id="simEcualizador">
+                <h2>2. Ecualizador interactivo</h2>
+                <p>Elige tu canción o el tono de prueba, presiona Reproducir y mueve los controles para escuchar cómo cambian los graves, medios y agudos. Baja el volumen de tu equipo antes de empezar.</p>
+                <div class="controles">
+                    <div class="campo">
+                        <label for="fuenteAudio">Fuente de audio</label>
+                        <select id="fuenteAudio">
+                            <option value="tono">Tono de prueba</option>
+                            <option value="cancion">Mi canción (audio/cancion.mp4)</option>
+                            <option value="archivo">Elegir archivo de mi equipo</option>
+                        </select>
+                    </div>
+                    <div class="campo" id="campoArchivo" style="display:none;">
+                        <label for="archivoAudio">Archivo de audio</label>
+                        <input type="file" id="archivoAudio" accept="audio/*,video/mp4">
+                    </div>
+                </div>
+                <div class="presets">
+                    <button class="boton secundario" data-preset="plano">Plano</button>
+                    <button class="boton secundario" data-preset="bass">Bass boost</button>
+                    <button class="boton secundario" data-preset="vocal">Vocal</button>
+                    <button class="boton secundario" data-preset="brillante">Brillante</button>
+                </div>
+                <div class="controles">
+                    <div class="campo"><label for="eqGraves">Graves: <span class="valor" id="valGraves">0 dB</span></label><input type="range" id="eqGraves" min="-12" max="12" value="0"></div>
+                    <div class="campo"><label for="eqMedios">Medios: <span class="valor" id="valMedios">0 dB</span></label><input type="range" id="eqMedios" min="-12" max="12" value="0"></div>
+                    <div class="campo"><label for="eqAgudos">Agudos: <span class="valor" id="valAgudos">0 dB</span></label><input type="range" id="eqAgudos" min="-12" max="12" value="0"></div>
+                    <div class="campo"><label for="eqVolumen">Volumen: <span class="valor" id="valEqVolumen">30%</span></label><input type="range" id="eqVolumen" min="0" max="100" value="30"></div>
+                </div>
+                <canvas id="visualizador" width="800" height="160"></canvas>
+                <button class="boton" id="btnReproducir">Reproducir</button>
+                <p id="estadoAudio">Detenido</p>
+            </div>
+
+            <div class="panel reveal" id="simQuiz">
+                <h2>3. ¿Qué audífonos me convienen?</h2>
+                <p>Responde dos preguntas y te recomendamos un modelo del catálogo.</p>
+                <div class="controles">
+                    <div class="campo">
+                        <label for="quizUso">¿Para qué los usarás?</label>
+                        <select id="quizUso"><option value="musica">Escuchar música</option><option value="ejercicio">Hacer ejercicio</option><option value="trabajo">Trabajo y videollamadas</option><option value="viajes">Viajes</option></select>
+                    </div>
+                    <div class="campo">
+                        <label for="quizFormato">¿Qué formato prefieres?</label>
+                        <select id="quizFormato"><option value="inear">In-ear (dentro del oído)</option><option value="diadema">De diadema</option></select>
+                    </div>
+                </div>
+                <button class="boton" id="btnRecomendar">Recomendar</button>
+                <div id="resultadoQuiz"></div>
+            </div>
+
+        </div>
+    </section>
+    <footer id="pie">
+        <div class="contenedor reveal">
+            <h2>Eduardo Palomino Martinez · ID24087</h2>
+            <p>Proyecto final · Arquitectura y Diseño para la Web II · Sonara, tu tienda de audífonos</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/codigoJavaScript.js"></script>
+</body>
+</html>
